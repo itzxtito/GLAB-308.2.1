@@ -15,7 +15,7 @@ class Character {
 }
 
 class Adventurer extends Character {
-    static ROLES = ["Fighter", "Healer", "Wizard", "Warrior"];
+    static ROLES = ["Fighterx", "Beast", "Beserker", "Warrior"];
 
     constructor(name, role) {
         super(name);
@@ -23,7 +23,7 @@ class Adventurer extends Character {
             throw new Error(`Invalid role: ${role}. Choose from: ${Adventurer.ROLES.join(", ")}`);
         }
         this.role = role;
-        this.inventory.push("bedroll", "50 gold coins");
+        this.inventory.push("kryptroll", "100 gold currency");
     }
 
     scout() {
@@ -85,29 +85,29 @@ class AdventurerFactory {
     }
 }
 
-const robin = new Adventurer("Robin", "Warrior");
-robin.inventory.push("sword", "potion", "artifact");
-robin.companion = new Companion("Leo", "Cat");
-robin.companion.companion = new Companion("Frank", "Flea");
-robin.companion.companion.inventory.push("small hat", "sunglasses");
+const scorpion = new Adventurer("Scorpion", "Warrior");
+scorpion.inventory.push("katana", "superpotion", "artifact");
+scorpion.companion = new Companion("Leo", "Dragon");
+scorpion.companion.companion = new Companion("Frank", "Flea");
+scorpion.companion.companion.inventory.push("small hat", "sunglasses");
 
-// Log each item in Robin's inventory
-for (let item of robin.inventory) {
+// this is to log each item
+for (let item of scorpion.inventory) {
     console.log(item);
 }
 
-// Test the roll, scout, and duel methods
-robin.roll();
-robin.roll(2);
-robin.scout();
+//testing the rolls
+scorpion.roll();
+scorpion.roll(2);
+scorpion.scout();
 
-// Test companion method
-robin.companion.follow();
+// testing the companion method
+scorpion.companion.follow();
 
-// Create an Adventurer Factory and generate adventurers
-const healers = new AdventurerFactory("Healer");
-const healerRobin = healers.generate("Robin the Healer");
+// adventure and generate
+const beasts = new AdventurerFactory("Beast");
+const beastScorpion = beasts.generate("Scorpion the Beast");
 
-// Test duel method
-const warrior = new Adventurer("Thorn", "Warrior");
-robin.duel(warrior);
+// testing the duel method
+const warrior = new Adventurer("Subzero", "Warrior");
+scorpion.duel(warrior);
